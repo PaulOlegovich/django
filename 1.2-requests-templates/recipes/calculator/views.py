@@ -28,3 +28,33 @@ DATA = {
 #     'ингредиент2': количество2,
 #   }
 # }
+
+def omlet(request):
+    servings = int(request.GET.get("servings", 1))
+
+    dict = DATA.get('omlet').copy()
+    if (servings > 1):
+        for key, value in dict.items():
+            dict[key] = round(value * servings, 1)
+    context = {'recipe': dict}
+    return render(request, 'calculator/index.html', context)
+
+def pasta(request):
+    servings = int(request.GET.get("servings", 1))
+
+    dict = DATA.get('pasta').copy()
+    if (servings > 1):
+        for key, value in dict.items():
+            dict[key] = round(value * servings, 1)
+    context = {'recipe': dict}
+    return render(request, 'calculator/index.html', context)
+
+def buter(request):
+    servings = int(request.GET.get("servings", 1))
+
+    dict = DATA.get('buter').copy()
+    if (servings > 1):
+        for key, value in dict.items():
+            dict[key] = round(value * servings, 1)
+    context = {'recipe': dict}
+    return render(request, 'calculator/index.html', context)
